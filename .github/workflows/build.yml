@@ -44,7 +44,7 @@ jobs:
           mkdir -p builds/windows
           cd ${{ env.PROJECT_PATH }}
           godot --headless --export-release "Windows Desktop" \
-            "$GITHUB_WORKSPACE/builds/windows/${{ env.EXPORT_NAME }}.exe"
+            "\( GITHUB_WORKSPACE/builds/windows/ \){{ env.EXPORT_NAME }}.exe"
 
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v4
@@ -87,12 +87,12 @@ jobs:
 
       - name: Configure Godot Android export
         run: |
-          mkdir -p ~/.config/godot
-          cat > ~/.config/godot/editor_settings-4.tres << 'EOF'
+          mkdir -p \~/.config/godot
+          cat > \~/.config/godot/editor_settings-4.tres << 'EOF'
           [gd_resource type="EditorSettings" format=3]
           [resource]
           export/android/android_sdk_path = "/usr/local/lib/android/sdk"
-          export/android/debug_keystore = ""
+          export/android/debug_keystore = "/home/runner/.android/debug.keystore"
           export/android/debug_keystore_user = "androiddebugkey"
           export/android/debug_keystore_pass = "android"
           export/android/force_system_user = false
@@ -103,7 +103,7 @@ jobs:
       - name: Generate debug keystore
         run: |
           keytool -genkeypair \
-            -keystore ~/.android/debug.keystore \
+            -keystore \~/.android/debug.keystore \
             -storepass android \
             -alias androiddebugkey \
             -keypass android \
@@ -122,7 +122,7 @@ jobs:
           mkdir -p builds/android
           cd ${{ env.PROJECT_PATH }}
           godot --headless --export-debug "Android" \
-            "$GITHUB_WORKSPACE/builds/android/${{ env.EXPORT_NAME }}.apk"
+            "\( GITHUB_WORKSPACE/builds/android/ \){{ env.EXPORT_NAME }}.apk"
 
       - name: Upload Android artifact
         uses: actions/upload-artifact@v4

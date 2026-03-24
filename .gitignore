@@ -1,0 +1,28 @@
+# Godot 4 specific ignores
+.godot/
+*.translation
+export.cfg
+export_credentials.cfg
+
+# Android builds
+android/
+builds/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Editor config (generated)
+.editorconfig
+
+# Rider/VSCode
+.idea/
+.vscode/
+
+# Temporary exports
+*.apk
+*.exe
+*.zip
+*.pck

@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://player"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_player"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1"]
+size = Vector3(1.5, 0.4, 2.0)
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_player")
+
+[node name="ShipMesh" type="Node3D" parent="."]
+
+[node name="Body" type="MeshInstance3D" parent="ShipMesh"]
+mesh = SubResource("BoxMesh_placeholder")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_1")
+
+[node name="GunPoint" type="Node3D" parent="."]
+position = Vector3(0, 0, -1.5)
+
+[node name="ShootCooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="EngineParticles" type="GPUParticles3D" parent="."]
+position = Vector3(0, 0, 1.2)
+emitting = true
+amount = 20
+lifetime = 0.4

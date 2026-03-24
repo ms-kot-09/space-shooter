@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://enemy"]
+
+[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_enemy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1"]
+size = Vector3(1.4, 0.4, 1.4)
+
+[node name="Enemy" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_enemy")
+
+[node name="EnemyMesh" type="Node3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_1")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+
+[node name="GunPoint" type="Node3D" parent="."]
+position = Vector3(0, 0, 1.2)

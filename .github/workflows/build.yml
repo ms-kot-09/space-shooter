@@ -11,6 +11,7 @@ env:
   GODOT_VERSION: 4.2.2
   EXPORT_NAME: SpaceShooter
   PROJECT_PATH: .
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true   # ← вот он, новый Node 24!
 
 jobs:
   # ─────────────────────────────────────────────

@@ -70,7 +70,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-          cache: 'none'          # ← КЭШ ОТКЛЮЧЁН (главная причина 400 ошибки)
+          # cache отключён (убрали строку полностью)
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3

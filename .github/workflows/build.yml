@@ -11,7 +11,7 @@ env:
   GODOT_VERSION: 4.2.2
   EXPORT_NAME: SpaceShooter
   PROJECT_PATH: .
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true   # ← вот он, новый Node 24!
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   # ─────────────────────────────────────────────
@@ -70,6 +70,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
+          cache: 'none'          # ← КЭШ ОТКЛЮЧЁН (главная причина 400 ошибки)
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
